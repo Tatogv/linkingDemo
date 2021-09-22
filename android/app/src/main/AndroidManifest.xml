@@ -1,0 +1,50 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.linkingdemo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".MainApplication"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:allowBackup="false"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- Add a new intent filter -->
+            <intent-filter>
+                <!-- Specify action VIEW -->
+                <action android:name="android.intent.action.VIEW" />
+                <!-- Add DEFAULT category -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- Add BROWSABLE category -->
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Add the Deep Link Scheme -->
+                <data android:scheme="linkingDemo" />
+                <!-- You can further refine your deep links by specifying host and path -->
+                <data android:host="exampleHost" />
+                <data android:pathPrefix="path" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="linkingDemo.io"
+                    android:pathPrefix="/example" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
